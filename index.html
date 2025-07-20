@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-div">
+        <form action="" onsubmit="return validateForm()">
+        <div class="name">
+            <input class="inp" type="text" name="name" id="name" placeholder="name"
+            required minlength="3" maxlength="15">
+            
+        </div>
+        <div class="email">
+
+            <input class="inp" type="email" name="Email" id="email" placeholder="email"
+             required>
+        </div>
+        <div class="password">
+            <input class="inp" type="password" name="Password" id="password" placeholder="password"
+             required 
+             pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+             title="Password (min 6 chars, 1 letter, 1 number)"
+             
+             >
+             <input  type="checkbox" onclick="if (this.checked) {
+                password.type='text'
+             }else{
+                password.type='password'
+             }" >
+        </div>
+        <div class="confirm-password">
+            <input class="inp" type="password" name="confirm password" id="confirm-password" placeholder="confirm password" 
+            required>
+        </div>
+        <p id="error"></p>
+    
+        <div>
+        <button type="submit" id="submit">sign up</button>
+        </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

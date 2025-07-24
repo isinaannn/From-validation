@@ -19,10 +19,10 @@ body{
 }
 .main-div{
     border: 2px solid rgb(0, 0, 0);
-    border-radius: 10px;
-    padding: 50px;
-    max-height: 300px;
-    max-width: 250px;
+    border-radius: 17px;
+    padding: 50px;  
+    height: 500px;
+    width: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,7 +30,7 @@ body{
     background-color: rgb(68, 51, 51);
     box-shadow: 5px 10px 10px rgb(0, 0, 0);
    background-color: #000000;
-background-image: linear-gradient(315deg, #000000 0%, #5e5368 74%);
+    background-image: linear-gradient(315deg, #000000 0%, #5e5368 74%);
 
     
 
@@ -39,29 +39,53 @@ background-image: linear-gradient(315deg, #000000 0%, #5e5368 74%);
 form{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
     text-align: center;
      
 }
 .inp{
-    border: 2px solid;
-    background-color: rgb(224, 212, 212);
+    border:  solid;
+    border-color: rgb(81, 75, 75);
+     /* background-color: #ffffff;
+    background-image: linear-gradient(315deg, #000000 0%, #5e5368 74%);
+
+     */
+     background-color: lightgray;
+    border-radius: 10px;
+    height: 35px;
+    width: 350px;
+    color: white;
+    padding: 10px;
+    outline: none;
+
+}
+.inp:focus {
+    background: #000000;  /* fallback for old browsers */
+  box-shadow: 0 0 5px #0F2027;
 }
 .password{
     position: relative;
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    
 }
-#password{
-    margin-left: 25px;
+.checkbox{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 50px;
+    background-color: #5e5368;
+    
+    
 }
+
+
 
 button{
     border: 2px solid black;
-    border-radius: 5px;
-    width: 80px;
-    height: 25px;
+    border-radius: 10px;
+    width: 150px;
+    height: 45px;
     color: rgb(255, 255, 255);
     background-color: #000000;
 background-image: linear-gradient(315deg, #000000 0%, #5e5368 74%);

@@ -8,7 +8,10 @@
 </head>
 <body>
     <div class="main-div">
-        <form action="" onsubmit="return validateForm()">
+
+
+        <form id="signup" class="form signup " action="" onsubmit="return validateForm()">
+            <h3>Sign up</h3>
         <div class="name">
             <input class="inp" type="text" name="name" id="name" placeholder="name"
             required minlength="3" maxlength="15">
@@ -16,21 +19,19 @@
         </div>
         <div class="email">
 
-            <input class="inp" type="email" name="Email" id="email" placeholder="email"
+            <input class="inp" type="email" name="Email" id="signup-email" placeholder="email"
              required>
         </div>
         <div class="password">
-            <input class="inp" type="password" name="Password" id="password" placeholder="password"
+            <input class="inp" type="password" name="Password" id="signup-password" placeholder="password"
              required 
              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
              title="Password (min 6 chars, 1 letter, 1 number)"
              
              >
-             <input class="checkbox"  type="checkbox" onclick="if (this.checked) {
-                password.type='text'
-             }else{
-                password.type='password'
-             }" >
+             <span id="signup-icon" class="pwd-icon"   onclick="(toggleIcon('signup-password','signup-icon'))">
+             👁️
+             </span>
         </div>
         <div class="confirm-password">
             <input class="inp" type="password" name="confirm password" id="confirm-password" placeholder="confirm password" 
@@ -39,10 +40,43 @@
         <p id="error"></p>
     
         <div>
-        <button type="submit" id="submit">sign up</button>
+        <button type="submit" id="signup-submit">sign up</button>
         </div>
+       <p>Already have an account?</p> <a href="#signin" onclick="toggleForm()">sign in</a>
         </form>
+
+
+
+
+         <form id="signin" class="form signin flex" action="" onsubmit="return signinForm()">
+            <h3>Sign in</h3>
+       
+        <div class="email">
+
+            <input class="inp" type="email" name="Email" id="signin-email" placeholder="email"
+             required>
+        </div>
+        <div class="password">
+            <input class="inp" type="password" name="Password" id="signin-password" placeholder="password"
+             required 
+             pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+             title="Password (min 6 chars, 1 letter, 1 number)"
+             
+             >
+             <span id="signin-icon" class="pwd-icon"   onclick="toggleIcon('signin-password','signin-icon')" >
+                👁️
+            </span>
+        </div>
+        
+        <p id="error"></p>
+    
+        <div>
+        <button type="submit" id="signin-submit">sign in</button>
+        </div>
+       <p>Don't have an account?</p> <a href="#signup" onclick="toggleForm()">sign up</a>
+        </form>
+       
     </div>
-    <script src="script.js"></script>
+    <script src="scriptcode.js"></script>
 </body>
 </html>

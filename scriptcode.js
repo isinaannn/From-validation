@@ -1,16 +1,18 @@
+    
 
-let userName=document.getElementById("name").value;
-let email=document.getElementById("email").value;
-let password=document.getElementById("password").value;
-let confirm=document.getElementById("confirm-password").value;
-let error= document.getElementById("error")
+function toggleForm(){
+    let signUpForm=document.getElementById("signup")
+    let signInForm=document.getElementById("signin")
 
+    signUpForm.classList.toggle("flex")
+    signInForm.classList.toggle("flex")
+}
 function validateForm() {
     
 
 let userName=document.getElementById("name").value;
-let email=document.getElementById("email").value;
-let password=document.getElementById("password").value;
+let email=document.getElementById("signup-email").value;
+let password=document.getElementById("signup-password").value;
 let confirm=document.getElementById("confirm-password").value;
 let error= document.getElementById("error")
 
@@ -40,10 +42,12 @@ if(confirm.trim()===""){
      error.textContent="please confirm your password"
      return false
      
-}else if (confirm !== password) {
+}else if (confirm.trim() !== password.trim()) {
     error.textContent = "Passwords do not match";
     return false;
 }
+
+
 const user={
     name: userName,
     email: email,
@@ -53,11 +57,49 @@ const user={
 
 localStorage.setItem("user",JSON.stringify(user))
 
+const userData= JSON.parse(localStorage.getItem("user"))
+
+
 
 error.textContent=""
 
+console.log(userData.name)
+alert(userName+"  register successfully")
 
-alert("form submitted successfully")
-
+toggleForm()
 return true
+}
+
+
+function signinForm(){
+    let email=document.getElementById("signin-email").value;
+    let password=document.getElementById("signin-password").value;
+    let error= document.getElementById("error")
+
+console.log(email)
+const userData= JSON.parse(localStorage.getItem("user"))
+
+   if(userData.email===email && userData.password===password) {
+        alert("login succussfull and your name is "+userData.name)
+        return false
+    }else{
+        alert("invalid credentials")
+        return false
+    }
+
+    
+    return true
+
+}
+
+function toggleIcon(pwdid,iconid) {
+     const pwd=document.getElementById(pwdid)
+    const icon=document.getElementById(iconid)
+    if (pwd.type === 'password') {
+        pwd.type = 'text';
+        icon.textContent = '🙈';
+    } else {
+        pwd.type = 'password';
+        icon.textContent = '👁️';
+    }
 }

@@ -63,13 +63,27 @@ form{
     height: 35px;
     width: 350px;
     color: rgb(255, 255, 255);
-    padding: 10px;
+    padding: 15px;
+    padding-left: 35px;
     outline: none;
 
 }
 .inp:focus {
     background: #000000;  /* fallback for old browsers */
   box-shadow: 0 0 5px #0F2027;
+}
+.inp-grp:focus-within i{
+    color: white;
+}
+.inp-grp{
+    position: relative;
+}
+i{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    
+    
 }
 .password{
     position: relative;
@@ -114,10 +128,12 @@ p{
 .signup a{
     margin-top: -30px;
     margin-bottom: 40px;
+    text-decoration: none;
 }
 .signin a{
     margin-top: -30px;
     margin-bottom: -100px;
+    text-decoration: none;
 }
 .signin h3{
     padding: auto;

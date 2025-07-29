@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
 </head>
 <body>
     <div class="main-div">
@@ -12,30 +14,33 @@
 
         <form id="signup" class="form signup " action="" onsubmit="return validateForm()">
             <h3>Sign up</h3>
-        <div class="name">
+        <div class="name inp-grp">
             <input class="inp" type="text" name="name" id="name" placeholder="name"
             required minlength="3" maxlength="15">
+           <i class="fa-regular fa-user"></i>
             
         </div>
-        <div class="email">
+        <div class="email inp-grp">
 
             <input class="inp" type="email" name="Email" id="signup-email" placeholder="email"
              required>
+             <i class="fa-regular fa-envelope"></i>
         </div>
-        <div class="password">
+        <div class="password inp-grp">
             <input class="inp" type="password" name="Password" id="signup-password" placeholder="password"
              required 
              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
              title="Password (min 6 chars, 1 letter, 1 number)"
-             
              >
+             <i class="fas fa-user-lock"></i>
              <span id="signup-icon" class="pwd-icon"   onclick="(toggleIcon('signup-password','signup-icon'))">
              👁️
              </span>
         </div>
-        <div class="confirm-password">
+        <div class="confirm-password inp-grp">
             <input class="inp" type="password" name="confirm password" id="confirm-password" placeholder="confirm password" 
             required>
+            	<i class="fas fa-lock"></i> <i class="fas fa-check"></i>
         </div>
         <p id="error"></p>
     
@@ -49,23 +54,25 @@
 
 
          <form id="signin" class="form signin flex" action="" onsubmit="return signinForm()">
-            <h3>Sign in</h3>
+            <h3>Login</h3>
        
-        <div class="email">
+        <div class="email inp-grp">
 
             <input class="inp" type="email" name="Email" id="signin-email" placeholder="email"
              required>
+              <i class="fa-regular fa-envelope"></i>
         </div>
-        <div class="password">
+        <div class="password inp-grp">
             <input class="inp" type="password" name="Password" id="signin-password" placeholder="password"
              required 
              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
              title="Password (min 6 chars, 1 letter, 1 number)"
-             
              >
+             <i class="fas fa-user-lock"></i>
              <span id="signin-icon" class="pwd-icon"   onclick="toggleIcon('signin-password','signin-icon')" >
                 👁️
             </span>
+            
         </div>
         
         <p id="error"></p>

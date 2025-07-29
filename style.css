@@ -3,7 +3,10 @@
     padding: 0;
     box-sizing: border-box;
     user-select: none;
-    
+  font-size: 16px;
+  letter-spacing: 1px;
+  
+  
 
 }
 html,body{
@@ -67,6 +70,13 @@ form{
     padding-left: 35px;
     outline: none;
 
+}
+.inp::placeholder {
+  color: #888;
+  font-style: oblique;
+  font-size: 16px;
+  letter-spacing: 1px;
+  opacity: 0.8;
 }
 .inp:focus {
     background: #000000;  /* fallback for old browsers */

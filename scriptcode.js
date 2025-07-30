@@ -1,3 +1,5 @@
+
+
     
 
 function toggleForm(){
@@ -64,7 +66,7 @@ const userData= JSON.parse(localStorage.getItem("user"))
 error.textContent=""
 
 console.log(userData.name)
-alert(userName+"  register successfully")
+alert("Successfully Registered")
 
 toggleForm()
 return true
@@ -80,13 +82,16 @@ console.log(email)
 const userData= JSON.parse(localStorage.getItem("user"))
 
    if(userData.email===email && userData.password===password) {
-        alert("login succussfull and your name is "+userData.name)
+        alert("login succussfull")
+        window.location.href="home.html"
         return false
-    }else{
+    }else if (!userData) {
+        alert("No user found. please sign up first.")
+    }
+    else{
         alert("invalid credentials")
         return false
     }
-
     
     return true
 
@@ -102,4 +107,25 @@ function toggleIcon(pwdid,iconid) {
         pwd.type = 'password';
         icon.textContent = '👁️';
     }
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const info=document.getElementById("user-info")
+    const userData=localStorage.getItem("user")
+   
+    if(!userData){
+    alert("hello guest! please sign up")
+        toggleForm()
+    }else{
+     const user=JSON.parse(localStorage.getItem("user"))
+    info.innerHTML=`Hello <mark id="highlight"> ${user.name} </mark>Welcome to my page`
+    console.log(info)
+    }
+})
+
+function logout(){
+    alert("You have been logged out")
+    localStorage.removeItem("user")
+    window.location.href=("index.html")
 }

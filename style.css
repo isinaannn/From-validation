@@ -150,3 +150,70 @@ p{
     margin-top: -100px;
     
 }
+
+.home-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.home-div h1{
+    font-size: 50px;
+    color: #7a7474;
+    margin-bottom: 100px;
+    
+}
+.home-div button{
+    margin-top: 100px;
+}
+#user-info{
+    color: rgb(178, 15, 15);
+    font-size: 30px;
+}
+#highlight{
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 35px;
+}
+
+
+/* Animation */
+.typewriter-animation-h1 {
+     border-right: 2px solid rgba(255,255,255,.75);
+  animation: 
+    typewriter 5s steps(50) 1s 1 normal both, 
+    blinkingCursor 500ms steps(50) infinite normal;
+}
+.typewriter-animation-p {
+    border-right: 2px solid transparent;
+  animation: 
+    typewriter 5s steps(50) 6s 1 normal both, 
+    blinkingCursorP 500ms steps(50) infinite 6s normal;
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blinkingCursor{
+  from { border-right-color: rgba(255,255,255,.75); }
+  to { border-right-color: transparent; }
+}
+@keyframes blinkingCursorP {
+  0%, 49% { border-right-color: transparent; }
+  50%, 100% { border-right-color: rgb(255, 255, 255); }
+}
+
+.cursor{
+    position: relative;
+    width: 24em;
+    margin: 0 auto;
+   
+    font-size: 30px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+
+

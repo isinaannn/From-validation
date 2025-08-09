@@ -12,9 +12,10 @@
     <div class="main-div">
 
 
-        <form id="signup" class="form signup " action="" onsubmit="return validateForm()">
+        <form id="signup" class="form signup " action="" novalidate>
             <h3>Sign up</h3>
         <div class="name inp-grp">
+
             <input class="inp" type="text" name="name" id="name" placeholder="name"
             required minlength="3" maxlength="15">
            <i class="fa-regular fa-user"></i>
@@ -27,10 +28,13 @@
              <i class="fa-regular fa-envelope"></i>
         </div>
         <div class="password inp-grp">
+
             <input class="inp" type="password" name="Password" id="signup-password" placeholder="password"
              required 
              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
              title="Password (min 6 chars, 1 letter, 1 number)"
+             autocomplete="new-password"
+             aria-label="create password"
              >
              <i class="fas fa-user-lock"></i>
              <span id="signup-icon" class="pwd-icon"   onclick="(toggleIcon('signup-password','signup-icon'))">
@@ -38,14 +42,17 @@
              </span>
         </div>
         <div class="confirm-password inp-grp">
+
             <input class="inp" type="password" name="confirm password" id="confirm-password" placeholder="confirm password" 
-            required>
+            required
+            autocomplete="current-password"
+            aria-label="confirm-password">
             	<i class="fas fa-lock"></i> <i class="fas fa-check"></i>
         </div>
         <p id="error"></p>
     
         <div>
-        <button type="submit" id="signup-submit">sign up</button>
+        <button type="submit"  id="signup-submit">sign up</button>
         </div>
        <p>Already have an account?</p> <a href="#signin" onclick="toggleForm()">sign in</a>
         </form>
@@ -53,7 +60,7 @@
 
 
 
-         <form id="signin" class="form signin flex" action="" onsubmit="return signinForm()">
+         <form id="signin" class="form signin flex" action="">
             <h3>Login</h3>
        
         <div class="email inp-grp">
@@ -67,6 +74,8 @@
              required 
              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
              title="Password (min 6 chars, 1 letter, 1 number)"
+             autocomplete="current-password"
+             aria-label="password" 
              >
              <i class="fas fa-user-lock"></i>
              <span id="signin-icon" class="pwd-icon"   onclick="toggleIcon('signin-password','signin-icon')" >

@@ -1,6 +1,8 @@
 
+const signup= document.getElementById("signup")
+const signin= document.getElementById("signin")
 
-    
+
 
 function toggleForm(){
     let signUpForm=document.getElementById("signup")
@@ -9,93 +11,124 @@ function toggleForm(){
     signUpForm.classList.toggle("flex")
     signInForm.classList.toggle("flex")
 }
-function validateForm() {
+    if (signup) {
+        
+    
+signup.addEventListener("submit",async function signUp(event){
+    
+    event.preventDefault()
+    
+
+    const form = event.target;
+    console.log(form)
+    // 🔍 Check HTML5 validation first
+    if (!form.checkValidity()) {
+        form.reportValidity(); // Show built-in browser validation errors
+        return;
+    }
     
 
 let userName=document.getElementById("name").value;
 let email=document.getElementById("signup-email").value;
 let password=document.getElementById("signup-password").value;
 let confirm=document.getElementById("confirm-password").value;
-let error= document.getElementById("error")
+let error= document.getElementById("error");
+ 
 
 
 
-if (userName.trim()==="") {
-    error.textContent="name field is required"
-    return false
-}
-if (email.trim()==="") {
-    error.textContent="email is required"
-    return false
-}else if(!email.includes("@") || !email.includes(".")){
-    error.textContent="email format invalid"
-    return false
-}
 
-if (password.trim()==="") {
+
+if (password==="") {
     error.textContent="password required"
-    return false
+    return 
+
 }else if (password.length<6) {
     error.textContent="password should must atleast 6 characters"
-    return false
-    
+   
+    return
 }
-if(confirm.trim()===""){
+
+if(confirm===""){
      error.textContent="please confirm your password"
-     return false
+    return
      
-}else if (confirm.trim() !== password.trim()) {
+}else if(confirm!==password) {
     error.textContent = "Passwords do not match";
-    return false;
+    // alert("This password is wrongggg");
+    return
 }
+ try{
+const res=await fetch("http://localhost:3000/users",{
+    method: "POST",
+    headers: {
+        'content-Type': 'application/json'
+    },
+    body : JSON.stringify({userName,email,password})
+})
 
-
-const user={
-    name: userName,
-    email: email,
-    password: password
-
+if (!res.ok) {
+  console.log("response error")  
 }
+const data= await res.json()
 
-localStorage.setItem("user",JSON.stringify(user))
+console.log(data)
 
-const userData= JSON.parse(localStorage.getItem("user"))
+ }
+ catch(err) {
+    console.error("Fetch error:",err)
+ }
 
-
-
-error.textContent=""
-
-console.log(userData.name)
-alert("Successfully Registered")
-
+alert("registration success")
 toggleForm()
-return true
-}
+
+return
+
+})
+
+    }
 
 
-function signinForm(){
+    if (signin) {
+        
+    
+
+ signin.addEventListener("submit",async function signin(event){
+
+    event.preventDefault()
     let email=document.getElementById("signin-email").value;
     let password=document.getElementById("signin-password").value;
     let error= document.getElementById("error")
+    console.log()
+try{
+    const res=await fetch(`http://localhost:3000/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`)
+    if (!res.ok) {
+        console.log("fetch failed")
+        // alert("fetch failed")
+    }else{
+        // alert("fetch success")
+    }
+    const data=await res.json()
 
-console.log(email)
-const userData= JSON.parse(localStorage.getItem("user"))
 
-   if(userData.email===email && userData.password===password) {
-        alert("login succussfull")
+    console.log(data)
+    if (data.length>1) {
+        alert("multiple users in same email")
+    }else if (data.length<1) {
+        alert("inavlid email or password")
+    }else {
+        alert(`login succussfull`)
         window.location.href="home.html"
-        return false
-    }else if (!userData) {
-        alert("No user found. please sign up first.")
+        localStorage.setItem("user",data[0].userName)
     }
-    else{
-        alert("invalid credentials")
-        return false
-    }
+
+} catch (err) {  
+    console.error("Error logging in",err)
+}
+  
     
     return true
-
-}
+ })
 
 function toggleIcon(pwdid,iconid) {
      const pwd=document.getElementById(pwdid)
@@ -109,23 +142,32 @@ function toggleIcon(pwdid,iconid) {
     }
 }
 
+    }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const info=document.getElementById("user-info")
-    const userData=localStorage.getItem("user")
-   
-    if(!userData){
-    alert("hello guest! please sign up")
-        toggleForm()
+window.addEventListener("DOMContentLoaded", function(){
+    
+    const userInfo= document.getElementById("user-info")
+    
+    if (userInfo) {
+   const username= localStorage.getItem("user")
+     userInfo.textContent=`hello ${username} now you can leave`
+     console.log('script loaded')
     }else{
-     const user=JSON.parse(localStorage.getItem("user"))
-    info.innerHTML=`Hello <mark id="highlight"> ${user.name} </mark>Welcome to my page`
-    console.log(info)
+        console.log("elemnet is not defined this page")
     }
 })
 
+
+
 function logout(){
-    alert("You have been logged out")
+    const confirmation= confirm("Do you want to logout")
+    if (confirmation==true) {
+         window.location.href="index.html"
     localStorage.removeItem("user")
-    window.location.href=("index.html")
+    toggleForm()
+    }
+   
+    
 }
+
+

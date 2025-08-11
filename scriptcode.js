@@ -59,7 +59,7 @@ if(confirm===""){
     return
 }
  try{
-const res=await fetch("http://localhost:3000/users",{
+const res=await fetch("https://my-json-server-yi0p.onrender.com/users",{
     method: "POST",
     headers: {
         'content-Type': 'application/json'
@@ -101,7 +101,7 @@ return
     let error= document.getElementById("error")
     console.log()
 try{
-    const res=await fetch(`http://localhost:3000/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`)
+    const res=await fetch(`https://my-json-server-yi0p.onrender.com/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`)
     if (!res.ok) {
         console.log("fetch failed")
         // alert("fetch failed")
@@ -167,7 +167,8 @@ async function logout(){
     const confirmation= confirm("Do you want to logout")
        const userId= localStorage.getItem("userId")
     if (confirmation==true) {
-        const res= await fetch(`http://localhost:3000/users/${userId}`,{
+
+        const res= await fetch(`https://my-json-server-yi0p.onrender.com/users/${userId}`,{
             method : "DELETE"
         })
 

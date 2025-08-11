@@ -88,7 +88,6 @@ return true
 
     }
 
-
     if (signin) {
         
     
@@ -121,6 +120,7 @@ try{
         window.location.href="home.html"
         localStorage.setItem("userName",data[0].userName)
         localStorage.setItem("userId",data[0].id)
+        localStorage.setItem("isLoggedIn",true)
         
        
     }
@@ -150,7 +150,12 @@ function toggleIcon(pwdid,iconid) {
 window.addEventListener("DOMContentLoaded", function(){
     
     const userInfo= document.getElementById("user-info")
-    
+    const isLoggedIn= localStorage.getItem("isLoggedIn")
+
+    if (!isLoggedIn==true) {
+        window.location.href="index.html"
+        return
+    }
     if (userInfo) {
    const userName= localStorage.getItem("userName")
    console.log(userName)

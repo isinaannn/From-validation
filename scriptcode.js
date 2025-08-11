@@ -1,7 +1,7 @@
 
+
 const signup= document.getElementById("signup")
 const signin= document.getElementById("signin")
-
 
 
 function toggleForm(){
@@ -119,7 +119,10 @@ try{
     }else {
         alert(`login succussfull`)
         window.location.href="home.html"
-        localStorage.setItem("user",data[0].userName)
+        localStorage.setItem("userName",data[0].userName)
+        localStorage.setItem("userId",data[0].id)
+        
+       
     }
 
 } catch (err) {  
@@ -135,10 +138,10 @@ function toggleIcon(pwdid,iconid) {
     const icon=document.getElementById(iconid)
     if (pwd.type === 'password') {
         pwd.type = 'text';
-        icon.textContent = '🙈';
+        icon.textContent = '👁️';
     } else {
         pwd.type = 'password';
-        icon.textContent = '👁️';
+        icon.textContent = '🙈';
     }
 }
 
@@ -149,8 +152,9 @@ window.addEventListener("DOMContentLoaded", function(){
     const userInfo= document.getElementById("user-info")
     
     if (userInfo) {
-   const username= localStorage.getItem("user")
-     userInfo.textContent=`hello ${username} now you can leave`
+   const userName= localStorage.getItem("userName")
+   console.log(userName)
+     userInfo.textContent=`hello ${userName} now you can leave`
      console.log('script loaded')
     }else{
         console.log("elemnet is not defined this page")
@@ -159,11 +163,23 @@ window.addEventListener("DOMContentLoaded", function(){
 
 
 
-function logout(){
+async function logout(){
     const confirmation= confirm("Do you want to logout")
+       const userId= localStorage.getItem("userId")
     if (confirmation==true) {
+        const res= await fetch(`http://localhost:3000/users/${userId}`,{
+            method : "DELETE"
+        })
+
+        if (!res.ok) {
+            console.log("response error")
+        }
+
+        localStorage.removeItem("user")
          window.location.href="index.html"
-    localStorage.removeItem("user")
+        
+
+    
     toggleForm()
     }
    

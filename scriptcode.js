@@ -82,7 +82,7 @@ console.log(data)
 alert("registration success")
 toggleForm()
 
-return
+return true
 
 })
 
@@ -176,7 +176,8 @@ async function logout(){
             console.log("response error")
         }
 
-        localStorage.removeItem("user")
+        localStorage.removeItem("userId")
+        localStorage.removeItem("userName")
          window.location.href="index.html"
         
 
